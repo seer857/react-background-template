@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { Menu } from 'antd'
 // import {
 //   AppstoreOutlined,
@@ -13,7 +13,7 @@ import Logo from '../../assets/aima1.png'
 import menuList from '../../config/menuConfig'
 const { SubMenu } = Menu
 
-export default class LeftNav extends Component {
+class LeftNav extends Component {
   /* 
     根据menu的数据数组 生成对应的标签数组
   */
@@ -26,17 +26,30 @@ export default class LeftNav extends Component {
           </Menu.Item>
         )
       } else {
+        const path = this.props.location.pathname
+        const cItem = item.children.find(cItem => cItem.key === path)
+        if (cItem) {
+          this.openKey = item.key
+        }
+
         return (
           <SubMenu key={item.key} icon={item.icon} title={item.title}>
-          {
-            this.getMenuNodes(item.children) //递归调用生成子菜单
-          }
+            {
+              this.getMenuNodes(item.children) //递归调用生成子菜单
+            }
           </SubMenu>
         )
       }
     })
   }
+  UNSAFE_componentWillMount() {
+    this.menuNodes = this.getMenuNodes(menuList)
+  }
   render() {
+    // 得到当前请求的路由路径
+    const path = this.props.location.pathname
+    const openKey = this.openKey
+    //const path = ''
     return (
       <div className="left-nav">
         <Link to="/" className="left-nav-header">
@@ -44,12 +57,12 @@ export default class LeftNav extends Component {
           <h1>数据后台</h1>
         </Link>
         <Menu
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
+          selectedKeys={[path]}
+          defaultOpenKeys={[openKey]}
           mode="inline"
           theme="dark"
         >
-          {this.getMenuNodes(menuList)}
+          {this.menuNodes}
         </Menu>
       </div>
     )
@@ -73,3 +86,9 @@ export default class LeftNav extends Component {
             <Menu.Item key="8">折现图</Menu.Item>
             <Menu.Item key="9">饼状图</Menu.Item>
           </SubMenu> */
+/* 
+  withRouter 高阶组件
+  包装非路由组件 ，返回一个新的组件
+  新的组件向非路由组件传递3个属性：history/location/match
+*/
+export default withRouter(LeftNav)

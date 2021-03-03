@@ -24,7 +24,7 @@ const menuList = [
   },
   {
     title: "用户管理",
-    key: "/sub1",
+    key: "/userAdmin",
     icon: <ContainerOutlined />,
     children: [
       {
@@ -39,7 +39,7 @@ const menuList = [
   },
   {
     title: "图表管理",
-    key: "/sub2",
+    key: "/charts",
     icon: <MailOutlined />,
     children: [
       {
