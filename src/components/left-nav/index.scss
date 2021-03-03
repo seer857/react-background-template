@@ -1,0 +1,20 @@
+
+.left-nav{
+  .left-nav-header{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #002140;
+    img{
+      margin: 0 10px;
+      width: 70px;
+      height: 70px;
+    }
+    h1{
+      color: white;
+      font-size: 25px;
+      font-family: cheche;
+      margin-bottom: 0px;
+    }
+  }
+}
