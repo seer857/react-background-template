@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Layout } from 'antd'
 
 import LeftNav from '../../components/left-nav'
-// import Header from '../../components/header'
+import Header from '../../components/header'
 import Home from '../home'
 import Category from '../category'
 import Product from '../product'
@@ -13,7 +13,7 @@ import Line from '../charts/line'
 import Pie from '../charts/pie'
 import { Redirect, Route, Switch } from 'react-router'
 import './admin.scss'
-const { Header, Content, Footer, Sider } = Layout
+const { Content,Footer, Sider } = Layout
 /* 
   管理的路由组件
 */
@@ -35,15 +35,9 @@ export default class Admin extends Component {
           <LeftNav />
         </Sider>
         <Layout>
-          <Header
-            className="site-layout-sub-header-background"
-            style={{ padding: 0 }}
-          />
-          <Content style={{ margin: '24px 16px 0' }}>
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, minHeight: 360 }}
-            >
+          <Header style={{ padding: 0 }} ></Header>
+          <Content style={{  backgroundColor:"white",margin: '24px 26px 0px' }}>
+            <div style={{ padding: 24}}>
               <Switch>
                 <Route path="/home" component={Home}></Route>
                 <Route path="/category" component={Category}></Route>
@@ -57,7 +51,7 @@ export default class Admin extends Component {
               </Switch>
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center',overflow:"hidden"}}>
+          <Footer style={{ textAlign: 'center', overflow: 'hidden' }}>
             AIMA ©2021 Created by Owner
           </Footer>
         </Layout>
