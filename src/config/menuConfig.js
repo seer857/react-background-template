@@ -54,7 +54,6 @@ const menuList = [
         title: "饼状图",
         key: "/charts/pie",
       },
-
     ]
   }
 ]

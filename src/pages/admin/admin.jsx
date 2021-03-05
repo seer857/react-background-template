@@ -17,8 +17,15 @@ const { Content,Footer, Sider } = Layout
 /* 
   管理的路由组件
 */
+
+
 export default class Admin extends Component {
+  
   render() {
+    // const user = localStorage.getItem('user')
+    // if(!user){
+    //   return <Redirect to="/login"></Redirect>
+    // }
     return (
       <Layout style={{ height: '100%' }}>
         <Sider

@@ -32,6 +32,7 @@ class Header extends Component {
       cancelText: '取消',
       onOk:() => {
         this.props.history.replace('/login')
+        localStorage.removeItem('user')
       },
     })
   }

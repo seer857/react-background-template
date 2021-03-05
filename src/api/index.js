@@ -17,5 +17,6 @@ import ajax from './ajax'
 //   return ajax('/login',{username,password},'POST')
 // } 
 export const reqLogin = (username,password) =>{
-  ajax('/login',{username,password},'POST')
+  const req =  ajax('/api/v1/login',{username,password},'POST')
+  return req
 }
